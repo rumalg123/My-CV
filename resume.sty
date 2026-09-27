@@ -34,6 +34,7 @@
 \RequirePackage{titlesec}
 \RequirePackage{enumitem}
 \RequirePackage{setspace}
+\RequirePackage{needspace}
 
 %------------------------------------------------------------------------------
 % Colors
@@ -68,7 +69,7 @@ pdfkeywords={DevOps Engineer, Linux, RHEL, Erlang, Docker, Podman, Kubernetes, S
 %------------------------------------------------------------------------------
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.25em}
+\setlength{\parskip}{0.16em}
 % Give TeX a little extra flexibility before allowing text to overflow the margin.
 \setlength{\emergencystretch}{1.5em}
 \linespread{1.00}
@@ -95,8 +96,8 @@ pdfkeywords={DevOps Engineer, Linux, RHEL, Erlang, Docker, Podman, Kubernetes, S
 
 \setlist[itemize]{
 leftmargin=18pt,
-itemsep=1.8pt,
-topsep=1pt,
+itemsep=0.8pt,
+topsep=0.5pt,
 parsep=0pt,
 partopsep=0pt,
 before=\interlinepenalty10000
@@ -108,38 +109,40 @@ before=\interlinepenalty10000
 
 \newcommand{\resumeSection}[1]
 {
-\vspace{0.30cm}
+\vspace{0.22cm}
 {\Large\bfseries\color{primary} #1}
-\vspace{0.10cm}
+\vspace{0.06cm}
 \hrule
-\vspace{0.14cm}
+\vspace{0.10cm}
 }
 
 \newcommand{\resumeSubheading}[4]
 {
+\Needspace{4\baselineskip}
 \textbf{\large #1}\hfill{\small #2}\par
-\vspace{1pt}
+\vspace{0.5pt}
 {\textit{#3}}\hfill{\small #4}\par
-\vspace{3pt}
+\vspace{1.5pt}
 }
 
 \newcommand{\skillCategory}[2]
 {
 \noindent\textbf{#1}\hspace{0.5em}#2\par
-\vspace{3pt}
+\vspace{1.5pt}
 }
 
 \newcommand{\projectHeading}[2]
 {
+\Needspace{3\baselineskip}
 \textbf{#1}\hfill{\small #2}\par
-\vspace{3pt}
+\vspace{1pt}
 }
 
 \newcommand{\educationHeading}[3]
 {
 \textbf{#1}\hfill{\small #2}\par
 #3\par
-\vspace{5pt}
+\vspace{2pt}
 }
 
 \newcommand{\certification}[1]
