@@ -1,0 +1,166 @@
+%==============================================================================
+% resume.sty
+% Modern ATS-Friendly Resume Style
+% Author: Rumal Gunawardana
+%==============================================================================
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{resume}[2026/07/05 Modern Resume]
+
+%------------------------------------------------------------------------------
+% Packages
+%------------------------------------------------------------------------------
+
+\RequirePackage[left=0.70in,
+                right=0.70in,
+                top=0.60in,
+                bottom=0.60in]{geometry}
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+
+\RequirePackage{lmodern}
+\RequirePackage{hyperref}
+\RequirePackage{xcolor}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{setspace}
+
+%------------------------------------------------------------------------------
+% Colors
+%------------------------------------------------------------------------------
+
+\definecolor{primary}{HTML}{0057B8}
+\definecolor{text}{HTML}{222222}
+\definecolor{subtext}{HTML}{666666}
+\definecolor{line}{HTML}{D9D9D9}
+
+\color{text}
+
+%------------------------------------------------------------------------------
+% Hyperlinks
+%------------------------------------------------------------------------------
+
+\hypersetup{
+colorlinks=true,
+urlcolor=primary,
+linkcolor=primary,
+citecolor=primary,
+pdfauthor={Rumal Gunawardana},
+pdftitle={Rumal Gunawardana - DevOps Engineer CV}
+}
+
+%------------------------------------------------------------------------------
+% General Formatting
+%------------------------------------------------------------------------------
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+
+\linespread{1.05}
+
+\pagestyle{empty}
+
+%------------------------------------------------------------------------------
+% Section Formatting
+%------------------------------------------------------------------------------
+
+\titleformat{\section}
+{
+\Large\bfseries\color{primary}
+}
+{}
+{0em}
+{}
+
+\titlespacing{\section}
+{0pt}
+{10pt}
+{5pt}
+
+%------------------------------------------------------------------------------
+% Lists
+%------------------------------------------------------------------------------
+
+\setlist[itemize]{
+leftmargin=18pt,
+itemsep=3pt,
+topsep=2pt,
+parsep=0pt,
+partopsep=0pt
+}
+
+%------------------------------------------------------------------------------
+% Commands
+%------------------------------------------------------------------------------
+
+\newcommand{\resumeSection}[1]
+{
+\vspace{0.45cm}
+
+{\Large\bfseries\color{primary} #1}
+
+\vspace{0.12cm}
+
+\hrule
+
+\vspace{0.20cm}
+}
+
+%------------------------------------------------------------------------------
+
+\newcommand{\resumeSubheading}[4]
+{
+\textbf{\large #1}\hfill{\small #2}\par
+\vspace{2pt}
+{\textit{#3}}\hfill{\small #4}\par
+\vspace{6pt}
+}
+
+%------------------------------------------------------------------------------
+
+\newcommand{\skillCategory}[2]
+{
+\textbf{#1}
+\hspace{0.5em}
+#2
+
+\vspace{5pt}
+}
+
+%------------------------------------------------------------------------------
+
+\newcommand{\projectHeading}[2]
+{
+\textbf{#1}\hfill{\small #2}\par
+\vspace{4pt}
+}
+
+%------------------------------------------------------------------------------
+
+\newcommand{\educationHeading}[3]
+{
+\textbf{#1}\hfill{\small #2}\par
+#3\par
+\vspace{6pt}
+}
+
+%------------------------------------------------------------------------------
+
+\newcommand{\certification}[1]
+{
+$\bullet$ #1
+
+\vspace{3pt}
+}
+
+%------------------------------------------------------------------------------
+
+\newcommand{\divider}
+{
+\vspace{0.15cm}
+
+\hrule
+
+\vspace{0.20cm}
+}
