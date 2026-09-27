@@ -5,19 +5,28 @@
 %==============================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{resume}[2026/07/05 Modern Resume]
+\ProvidesPackage{resume}[2026/09/27 ATS-Friendly Resume]
 
 %------------------------------------------------------------------------------
 % Packages
 %------------------------------------------------------------------------------
 
-\RequirePackage[left=0.70in,
-                right=0.70in,
-                top=0.60in,
-                bottom=0.60in]{geometry}
+\RequirePackage[left=0.65in,
+                right=0.65in,
+                top=0.50in,
+                bottom=0.50in]{geometry}
 
+% Improve searchable/copyable text in generated PDFs for ATS parsing.
+\RequirePackage{cmap}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
+
+\IfFileExists{glyphtounicode.tex}{%
+  \input{glyphtounicode}%
+  \ifdefined\pdfgentounicode
+    \pdfgentounicode=1
+  \fi
+}{}
 
 \RequirePackage{lmodern}
 \RequirePackage{hyperref}
@@ -38,7 +47,7 @@
 \color{text}
 
 %------------------------------------------------------------------------------
-% Hyperlinks
+% Hyperlinks and PDF metadata
 %------------------------------------------------------------------------------
 
 \hypersetup{
@@ -47,8 +56,12 @@ urlcolor=primary,
 linkcolor=primary,
 citecolor=primary,
 pdfauthor={Rumal Gunawardana},
-pdftitle={Rumal Gunawardana - DevOps Engineer CV}
+pdftitle={Rumal Gunawardana - DevOps Engineer CV},
+pdfsubject={DevOps, Linux, Telecom Infrastructure, Erlang, Containers},
+pdfkeywords={DevOps Engineer, Linux, RHEL, Erlang, Docker, Podman, Kubernetes, SMS Firewall, SS7, MAP, M3UA, SCTP, MariaDB, Redis}
 }
+
+\urlstyle{same}
 
 %------------------------------------------------------------------------------
 % General Formatting
@@ -56,9 +69,7 @@ pdftitle={Rumal Gunawardana - DevOps Engineer CV}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.25em}
-
-\linespread{1.05}
-
+\linespread{1.00}
 \pagestyle{empty}
 
 %------------------------------------------------------------------------------
@@ -66,9 +77,7 @@ pdftitle={Rumal Gunawardana - DevOps Engineer CV}
 %------------------------------------------------------------------------------
 
 \titleformat{\section}
-{
-\Large\bfseries\color{primary}
-}
+{\Large\bfseries\color{primary}}
 {}
 {0em}
 {}
@@ -84,10 +93,11 @@ pdftitle={Rumal Gunawardana - DevOps Engineer CV}
 
 \setlist[itemize]{
 leftmargin=18pt,
-itemsep=3pt,
-topsep=2pt,
+itemsep=1.8pt,
+topsep=1pt,
 parsep=0pt,
-partopsep=0pt
+partopsep=0pt,
+before=\interlinepenalty10000
 }
 
 %------------------------------------------------------------------------------
@@ -96,71 +106,49 @@ partopsep=0pt
 
 \newcommand{\resumeSection}[1]
 {
-\vspace{0.45cm}
-
+\vspace{0.30cm}
 {\Large\bfseries\color{primary} #1}
-
-\vspace{0.12cm}
-
+\vspace{0.10cm}
 \hrule
-
-\vspace{0.20cm}
+\vspace{0.14cm}
 }
-
-%------------------------------------------------------------------------------
 
 \newcommand{\resumeSubheading}[4]
 {
 \textbf{\large #1}\hfill{\small #2}\par
-\vspace{2pt}
+\vspace{1pt}
 {\textit{#3}}\hfill{\small #4}\par
-\vspace{6pt}
+\vspace{3pt}
 }
-
-%------------------------------------------------------------------------------
 
 \newcommand{\skillCategory}[2]
 {
-\textbf{#1}
-\hspace{0.5em}
-#2
-
-\vspace{5pt}
+\textbf{#1}\hspace{0.5em}#2
+\vspace{3pt}
 }
-
-%------------------------------------------------------------------------------
 
 \newcommand{\projectHeading}[2]
 {
 \textbf{#1}\hfill{\small #2}\par
-\vspace{4pt}
+\vspace{3pt}
 }
-
-%------------------------------------------------------------------------------
 
 \newcommand{\educationHeading}[3]
 {
 \textbf{#1}\hfill{\small #2}\par
 #3\par
-\vspace{6pt}
+\vspace{5pt}
 }
-
-%------------------------------------------------------------------------------
 
 \newcommand{\certification}[1]
 {
 $\bullet$ #1
-
 \vspace{3pt}
 }
-
-%------------------------------------------------------------------------------
 
 \newcommand{\divider}
 {
 \vspace{0.15cm}
-
 \hrule
-
 \vspace{0.20cm}
 }

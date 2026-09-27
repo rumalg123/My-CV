@@ -2,27 +2,53 @@
 % PROJECTS
 %==============================================================================
 
-\resumeSection{Projects}
+\resumeSection{Selected Projects}
+
+%------------------------------------------------------------------------------
+% KUBERNETES R&D
+%------------------------------------------------------------------------------
+
+\projectHeading
+{Kubernetes R\&D Migration Lab for Distributed Erlang SMS Firewall}
+{Omobio R\&D / Lab}
+
+\begin{itemize}
+
+\item Built a Kubernetes lab proof of concept to evaluate containerizing a multi-node
+distributed Erlang SMS Firewall architecture, using StatefulSets for stable application
+identities and Flannel for cluster networking.
+
+\item Tested deployment topology, Erlang node communication, application startup,
+service discovery, restart behavior, and operational considerations across firewall and
+logging components in a three-node lab cluster.
+
+\item Created the R\&D Kubernetes architecture diagram to document the lab topology,
+component relationships, and communication paths for technical review and implementation.
+
+\item R\&D-only prototype used for technical evaluation; it was not deployed to a
+customer or production environment.
+
+\end{itemize}
 
 %------------------------------------------------------------------------------
 % SELF HOSTED PLATFORM
 %------------------------------------------------------------------------------
 
 \projectHeading
-{Self-Hosted Production Platform}
+{Self-Hosted Application and Automation Platform}
 {Personal Project}
 
 \begin{itemize}
 
-\item Designed, deployed, and maintained Linux-based production infrastructure hosting personal applications, APIs, and automation services.
+\item Deploy and maintain Linux VPS infrastructure for personal applications, APIs,
+Telegram bots, and automation services using Docker-based deployments.
 
-\item Containerized applications using Docker and automated deployments through GitHub Actions CI/CD pipelines.
+\item Use GitHub Actions for automated deployment workflows and configure Nginx reverse
+proxying, SSL/TLS certificates, Cloudflare DNS, monitoring, backups, and remote
+administration.
 
-\item Configured Nginx reverse proxy, SSL certificates, Cloudflare DNS, and secure remote administration.
-
-\item Implemented monitoring, uptime tracking, automated backups, and deployment automation for self-hosted services.
-
-\item Hosted publicly accessible websites and APIs with a focus on reliability, maintainability, and operational simplicity.
+\item Operate publicly accessible services with a focus on repeatable deployments,
+reliability, maintainability, and practical incident troubleshooting.
 
 \end{itemize}
 
@@ -36,48 +62,10 @@
 
 \begin{itemize}
 
-\item Designed a microservice-based customer portal using Spring Boot following distributed application principles.
+\item Designed a Spring Boot microservice-based customer portal with Keycloak
+authentication and Apache Kafka for service communication.
 
-\item Implemented authentication using Keycloak and service communication using Apache Kafka.
-
-\item Containerized services using Docker and deployed them to an Oracle Cloud VPS.
-
-\item Implemented automated deployments to streamline application updates.
-
-\end{itemize}
-
-%------------------------------------------------------------------------------
-% TRASH SMART
-%------------------------------------------------------------------------------
-
-\projectHeading
-{Trash-Smart IoT Waste Management System}
-{University Final Project}
-
-\begin{itemize}
-
-\item Developed a smart waste management platform combining IoT hardware with a cloud-based backend.
-
-\item Built REST APIs using Spring Boot and stored operational data in PostgreSQL.
-
-\item Developed a React Native mobile application with Google Maps integration for optimized waste collection routes.
-
-\item Integrated Arduino, GPS, and ultrasonic sensors for real-time waste bin monitoring.
-
-\end{itemize}
-
-%------------------------------------------------------------------------------
-% DINE EASE
-%------------------------------------------------------------------------------
-
-\projectHeading
-{Dine-Ease Restaurant Management System}
-{Academic / Personal}
-
-\begin{itemize}
-
-\item Developed a PHP and MySQL backend for restaurant order management, inventory tracking, and operational workflows.
-
-\item Built a web frontend using HTML, CSS, and JavaScript for staff-facing restaurant management tasks.
+\item Containerized services with Docker, deployed the prototype to Oracle Cloud
+infrastructure, and implemented automated deployment workflows.
 
 \end{itemize}

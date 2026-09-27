@@ -1,0 +1,106 @@
+name: Build and Release CV
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.tex"
+      - "**/*.sty"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cv-release-main
+  cancel-in-progress: false
+
+jobs:
+  build-and-release:
+    name: Build PDF and create release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            latexmk \
+            lmodern \
+            texlive-fonts-recommended \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-latex-recommended
+
+      - name: Determine next CV version
+        id: version
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git fetch --tags --force
+
+          latest_version="$(
+            git tag -l 'cv-v*' \
+              | grep -E '^cv-v[0-9]+$' \
+              | sed -E 's/^cv-v([0-9]+)$/\1/' \
+              | sort -n \
+              | tail -n 1 \
+              || true
+          )"
+
+          if [[ -z "${latest_version}" ]]; then
+            latest_version=0
+          fi
+
+          next_version=$((latest_version + 1))
+          tag="cv-v${next_version}"
+          pdf_name="Rumal_Gunawardana_CV_v${next_version}.pdf"
+
+          echo "version=${next_version}" >> "$GITHUB_OUTPUT"
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+          echo "pdf_name=${pdf_name}" >> "$GITHUB_OUTPUT"
+
+          echo "Next release: ${tag}"
+          echo "PDF: ${pdf_name}"
+
+      - name: Compile LaTeX CV
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          latexmk \
+            -pdf \
+            -interaction=nonstopmode \
+            -halt-on-error \
+            -file-line-error \
+            main.tex
+
+          test -f main.pdf
+
+      - name: Prepare versioned PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp main.pdf "${{ steps.version.outputs.pdf_name }}"
+
+      - name: Create GitHub release and upload PDF
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.version.outputs.tag }}
+          VERSION: ${{ steps.version.outputs.version }}
+          PDF_NAME: ${{ steps.version.outputs.pdf_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          gh release create "$TAG" "$PDF_NAME" \
+            --target "$GITHUB_SHA" \
+            --title "Rumal Gunawardana CV v$VERSION" \
+            --notes "Automatically generated from the main branch at commit \`$GITHUB_SHA\`." \
+            --latest
