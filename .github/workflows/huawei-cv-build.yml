@@ -1,0 +1,62 @@
+name: Build Huawei Targeted CV
+
+on:
+  push:
+    branches:
+      - huawei-core-network-cv
+    paths:
+      - "**/*.tex"
+      - "**/*.sty"
+      - ".github/workflows/huawei-cv-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: huawei-cv-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-huawei-cv:
+    name: Build Huawei Core Network CV PDF
+    if: github.ref == 'refs/heads/huawei-core-network-cv'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Huawei CV branch
+        uses: actions/checkout@v4
+
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            latexmk \
+            lmodern \
+            texlive-fonts-recommended \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-latex-recommended
+
+      - name: Compile Huawei CV
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          latexmk \
+            -pdf \
+            -interaction=nonstopmode \
+            -halt-on-error \
+            -file-line-error \
+            main.tex
+
+          test -s main.pdf
+          mv main.pdf Rumal_Gunawardana_CV_Huawei.pdf
+
+      - name: Upload Huawei CV artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rumal_Gunawardana_CV_Huawei
+          path: Rumal_Gunawardana_CV_Huawei.pdf
+          if-no-files-found: error
+          retention-days: 30
