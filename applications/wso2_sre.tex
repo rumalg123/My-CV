@@ -1,0 +1,94 @@
+% ATS-friendly, evidence-based resume tailored to WSO2's SRE vacancy.
+% Home labs and personal projects are explicitly distinguished from production work.
+
+\begin{center}
+{\Huge\bfseries Rumal Gunawardana}
+\vspace{0.10cm}
+
+{\large\color{primary} DevOps Engineer \textbar{} Site Reliability Engineering}
+\vspace{0.16cm}
+
+Sri Lanka \textbar{} +94 78 920 9595 \textbar{}
+\href{mailto:rumalg123@gmail.com}{rumalg123@gmail.com}
+\vspace{0.07cm}
+
+\href{https://rumalg.me}{rumalg.me} \quad$\cdot$\quad
+\href{https://www.linkedin.com/in/rumal-gunawardana}{linkedin.com/in/rumal-gunawardana}
+\quad$\cdot$\quad
+\href{https://github.com/rumalg123}{github.com/rumalg123}
+\end{center}
+\vspace{0.05cm}\hrule\vspace{0.08cm}
+
+\resumeSection{Professional Summary}
+DevOps Engineer with hands-on production experience supporting carrier-grade telecom services and diagnosing failures across Linux infrastructure, distributed Erlang/OTP applications, databases and signaling networks. Experienced in incident response, service restoration, controlled deployments and rollbacks, log and packet-level troubleshooting, and application defect fixes. Build Go/Python software, container-based test environments, and self-hosted monitoring and operational automation. Seeking to apply software engineering and systems thinking to reliable cloud services.
+
+\resumeSection{Technical Skills}
+\skillCategory{Systems \& Cloud:}{RHEL, Ubuntu Server, systemd, Linux troubleshooting, Oracle Cloud Infrastructure (personal environments), Nginx, SSH}
+\skillCategory{Containers \& Delivery:}{Docker, Podman, Kubernetes (multi-node lab), GitHub Actions, CI/CD, Git, Bash automation}
+\skillCategory{Programming:}{Erlang/OTP, Python, Go, Bash, Java, Spring Boot; code-level debugging, APIs, automated tests}
+\skillCategory{Reliability \& Observability:}{Incident response, root-cause analysis, recovery validation, rollbacks, Prometheus, Grafana, Alertmanager, Nagios, Blackbox Exporter, cAdvisor}
+\skillCategory{Data \& Stateful Services:}{MariaDB, MySQL, Redis, MongoDB, PostgreSQL; backups, restores, cache and resource troubleshooting}
+\skillCategory{Networking \& Security:}{TCP/IP, DNS, SSL/TLS, firewalls, UFW, Fail2ban, routing, Wireshark/tcpdump, SS7/MAP/SCCP, M3UA/SCTP}
+
+\resumeSection{Professional Experience}
+\resumeSubheading{Omobio (Pvt) Ltd}{Sri Lanka}{DevOps Engineer}{Jul 2026 -- Present}
+\begin{itemize}
+\item Operate, deploy, upgrade and validate carrier-grade SMS Firewall platforms for multiple live mobile operators; perform pre-change checks, service verification and rollback coordination.
+\item Trace cross-layer incidents through RHEL logs, distributed Erlang services, MariaDB/Redis and SS7/MAP packet captures, isolating application, database, routing and network causes.
+\item Investigate signaling loops and abnormal traffic spikes; correlate traces and service behaviour, assess operational impact, and coordinate safe patch reversions and customer updates.
+\item Contribute Erlang/OTP changes for SMS routing and filtering defects, and validate application behaviour with developers and QA following releases.
+\item Supported incident recovery affecting 32 production servers, assisting with boot and service recovery checks and coordination of restoration activities.
+\item Build and maintain Docker/Podman images and Bash tooling for deployment, operational checks and diagnostic collection; document incident findings and runbooks.
+\end{itemize}
+
+\resumeSubheading{Omobio (Pvt) Ltd}{Sri Lanka}{Associate DevOps Engineer}{Jan 2026 -- Jun 2026}
+\begin{itemize}
+\item Provisioned and configured Linux-based SMS Firewall environments for testing, staging and customer deployments; supported live releases and post-change verification.
+\item Triaged Nagios alerts, service failures and customer incidents using logs, signaling traces, database checks and systematic escalation.
+\item Investigated Erlang product defects and contributed fixes and operational validation; researched ClickHouse for telecom data workloads.
+\end{itemize}
+
+\resumeSubheading{Omobio (Pvt) Ltd}{Sri Lanka}{Intern DevOps Engineer}{Jul 2025 -- Dec 2025}
+\begin{itemize}
+\item Assisted with Linux testbed setup, service monitoring, deployment validation, troubleshooting, Bash scripts and operational documentation.
+\end{itemize}
+
+\resumeSubheading{Fourdiv (Pvt) Ltd}{Sri Lanka}{Software Engineer Intern}{Nov 2024 -- May 2025}
+\begin{itemize}
+\item Developed Java/Spring Boot REST APIs, Next.js interfaces, e-commerce and payment integrations; containerized services and maintained Linux VPS deployments, monitoring and backups.
+\end{itemize}
+
+\resumeSection{Selected Engineering Projects}
+\projectHeading{Go SMS/SS7 Signalling and Failure-Test Lab}{\href{https://github.com/rumalg123/telco-signalling-lab}{GitHub / Go}}
+\begin{itemize}
+\item Built a containerized Go test environment with SMPP ESME, protocol-aware proxy, SMSC and M3UA/SCTP STP; implemented protocol flows for signaling, routing and SMS lifecycle testing.
+\item Added fault-injection scenarios, delivery-report and multipart correlation, health endpoints and repeatable smoke tests to exercise failure and recovery paths.
+\end{itemize}
+
+\projectHeading{Self-Hosted Monitoring and Cloud Operations}{Personal infrastructure / OCI}
+\begin{itemize}
+\item Operate self-hosted Linux services with Docker Compose, Nginx and GitHub Actions; centralized Prometheus, Grafana, Alertmanager, Node Exporter, cAdvisor and Blackbox probing.
+\item Hardened server access with restricted SSH, UFW and Fail2ban; configured host/container alerts, backup routines and recovery access for personal VPS environments.
+\end{itemize}
+
+\projectHeading{Asynchronous Python Service with Resilience Controls}{\href{https://github.com/rumalg123/Advanced-File-Filter-Bot}{GitHub / Python}}
+\begin{itemize}
+\item Developed an asynchronous file-indexing and delivery bot using Python, aiohttp, MongoDB and Redis, including health endpoints and administrative diagnostics.
+\item Implemented bounded queues, concurrent database reads, circuit breakers, atomic quotas and feature-gated rollouts to handle partial failures and control load.
+\end{itemize}
+
+\projectHeading{Kubernetes Lab for Distributed Erlang}{Omobio R\&D / non-production}
+\begin{itemize}
+\item Built a three-node Kubernetes proof of concept for distributed Erlang firewall services using StatefulSets, stable identities, service discovery and Flannel networking; tested startup and communication paths.
+\end{itemize}
+
+\projectHeading{Erlang/OTP SS7 STP Protocol Lab}{\href{https://github.com/rumalg123/erlang-telco-test-lab}{GitHub / Erlang}}
+\begin{itemize}
+\item Built a modular telecom core simulation with an implemented SS7/SIGTRAN STP and a component-scoped OTP 29 test suite (91 documented tests); kept unimplemented network elements clearly separated as scaffolds.
+\end{itemize}
+
+\resumeSection{Education \& Certifications}
+\textbf{BSc in Information Systems} \hfill 2025\par
+University of Colombo School of Computing, Sri Lanka\par
+\vspace{3pt}
+\textbf{Certifications:} Oracle Cloud Infrastructure 2025 Foundations Associate; Oracle Cloud Infrastructure 2025 AI Foundations Associate; Datadog Core Skills Learning Path.
