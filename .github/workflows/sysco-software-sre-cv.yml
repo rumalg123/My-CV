@@ -1,0 +1,48 @@
+name: Build Sysco LABS Software SRE CV
+
+on:
+  push:
+    branches:
+      - sysco-software-sre-cv
+    paths:
+      - "**/*.tex"
+      - "**/*.sty"
+      - ".github/workflows/sysco-software-sre-cv.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sysco-software-sre-cv
+  cancel-in-progress: true
+
+jobs:
+  build-cv:
+    name: Compile Sysco Software SRE PDF
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout CV branch
+        uses: actions/checkout@v4
+      - name: Install LaTeX and PDF tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            latexmk lmodern texlive-fonts-recommended \
+            texlive-latex-base texlive-latex-extra texlive-latex-recommended \
+            poppler-utils
+      - name: Compile and validate PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+          test -s main.pdf
+          test "$(pdfinfo main.pdf | awk '/^Pages:/ {print $2}')" -eq 2
+          mv main.pdf Rumal_Gunawardana_Software_SRE_Sysco_LABS.pdf
+      - name: Upload targeted CV
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rumal_Gunawardana_Software_SRE_Sysco_LABS
+          path: Rumal_Gunawardana_Software_SRE_Sysco_LABS.pdf
+          if-no-files-found: error
+          retention-days: 30
