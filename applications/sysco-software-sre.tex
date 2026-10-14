@@ -95,6 +95,8 @@ backups and deployments for hosted applications.
 \item Deployed Prometheus, Grafana, Alertmanager, Blackbox Exporter and cAdvisor
 via Docker Compose; configured node-exporter targets, CPU/memory/disk and
 container alerts, and HTTP/TCP endpoint probes.
+\item Added multi-host node telemetry and alert rules for instance outages, high
+CPU/memory, low disk space and repeated Docker container restarts.
 \end{itemize}
 
 \projectHeading{Python Dependency Resilience and Concurrency Lab}{Personal Lab}
@@ -102,6 +104,8 @@ container alerts, and HTTP/TCP endpoint probes.
 \item Built a Python service using Redis and MongoDB to explore concurrent requests,
 dependency failures and circuit-breaker behavior; exercised recovery scenarios
 in a controlled lab environment.
+\item Tested concurrency and dependent-service failure scenarios to understand
+request handling, isolation and recovery without changing production systems.
 \end{itemize}
 
 \projectHeading{Distributed Erlang Kubernetes Migration Proof of Concept}{Omobio R\&D / Lab}
@@ -109,18 +113,24 @@ in a controlled lab environment.
 \item Built a three-node Kubernetes lab with StatefulSets, stable node identities,
 headless service discovery and Flannel; tested Erlang node communication,
 application restarts and firewall/logging component connectivity.
+\item Documented the migration architecture and validated peer discovery and
+restart behavior in the lab; no production Kubernetes deployment is claimed.
 \end{itemize}
 
 \projectHeading{Sri-Tel Microservice Customer Portal}{Academic / Personal}
 \begin{itemize}
 \item Built Spring Boot microservices with Keycloak authentication and Kafka-based
 communication; containerized components with Docker and deployed a prototype on OCI.
+\item Used automated deployment workflows to exercise build and release steps
+for multiple services in a non-production cloud environment.
 \end{itemize}
 
 \projectHeading{Self-Hosted Application and Delivery Platform}{Personal Project}
 \begin{itemize}
 \item Operate Linux VPS applications with Docker, GitHub Actions, Nginx and HTTPS;
 maintain monitoring, backups and secure SSH administration.
+\item Configured a jump-host SSH access pattern and host security controls,
+including UFW and Fail2ban, alongside central service monitoring.
 \end{itemize}
 
 \resumeSection{Certifications}
