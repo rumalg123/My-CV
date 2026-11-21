@@ -1,0 +1,37 @@
+name: Build Sysco LABS Operations Engineer CV
+
+on:
+  push:
+    branches:
+      - applications/sysco-operations-engineer-2026
+    paths:
+      - "**/*.tex"
+      - "**/*.sty"
+      - ".github/workflows/sysco-operations-cv.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Compile application PDF (artifact only)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            latexmk lmodern texlive-latex-base texlive-latex-extra texlive-latex-recommended
+      - name: Build CV
+        run: |
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+          test -s main.pdf
+          mv main.pdf Rumal_Gunawardana_CV_Sysco_LABS_Operations_Engineer.pdf
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sysco-labs-operations-engineer-cv
+          path: Rumal_Gunawardana_CV_Sysco_LABS_Operations_Engineer.pdf
+          if-no-files-found: error
